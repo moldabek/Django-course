@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="mt-5">
+        <button type="button" class="btn btn-primary">Add Task</button>
+    </div>
+    <hr>
+    <div>
+        <h1>Completed tasks in "List {{ number }}"</h1>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Task</th>
+              <th scope="col">Created</th>
+              <th scope="col">Due on</th>
+              <th scope="col">Owner</th>
+              <th scope="col">Mark</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for d in data %}
+              <tr>
+                {% for value in d.values %}
+
+                    {% if value != True %}
+                        <td>{{ value }}</td>
+                    {% else %}
+                        <td><button type="button" class="btn btn-info">Not Done</button></td>
+                    {% endif %}
+
+                {% endfor %}
+              </tr>
+        {% endfor %}
+          </tbody>
+        </table>
+        <div>
+            <button type="button" class="btn btn-warning">View incomplete tasks</button>
+            <button type="button" class="btn btn-danger">Delete this list</button>
+        </div>
+    </div>
+{% endblock %}
