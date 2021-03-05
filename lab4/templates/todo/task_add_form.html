@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form method="post">
+    {% csrf_token %}
+        {% for foo in form.visible_fields %}
+            <div class="form-group">
+                <label for="">{{ foo.label_tag }}</label>
+                {{ foo }}
+            </div>
+        {% endfor %}
+        <input type="submit" value="Submit">
+    </form>
+{% endblock %}

@@ -27,7 +27,7 @@
         </table>
         <div>
             <a href="{% url 'todos' number %}"><button type="button" class="btn btn-warning">View incomplete tasks</button></a>
-            <button type="button" class="btn btn-danger">Delete this list</button>
+            <a href="{% url 'delete' number %}"><button type="button" class="btn btn-danger">Delete this list</button></a>
         </div>
     </div>
 {% endblock %}

@@ -1,8 +1,10 @@
 """
-    This view show Function-Based-View(FBV).
+    This views show Function-Based-View(FBV).
 """
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+
+from .forms import TaskForm, ListForm
 from .models import List, Task
 
 
@@ -32,3 +34,25 @@ def change_mark(request, pk):
 def show_list_view(request):
     data = List.objects.all()
     return render(request, 'todo/list_page.html', {"data": data})
+
+
+def task_form_view(request):
+    form = TaskForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect(to='tasks')
+    return render(request, 'todo/task_add_form.html', {'form': form})
+
+
+def list_form_view(request):
+    form = ListForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect(to='tasks')
+    return render(request, 'todo/task_add_form.html', {'form': form})
+
+
+def delete_list(request, pk):
+    deleted_list = List.objects.get(id=pk)
+    deleted_list.delete()
+    return redirect("tasks")

@@ -32,7 +32,7 @@
         </table>
         <div>
             <a href="{% url 'todos_completed' number %}"><button type="button" class="btn btn-warning">View completed tasks</button></a>
-            <button type="button" class="btn btn-danger">Delete this list</button>
+            <a href="{% url 'delete' number %}"><button type="button" class="btn btn-danger">Delete this list</button></a>
         </div>
     </div>
 {% endblock %}
