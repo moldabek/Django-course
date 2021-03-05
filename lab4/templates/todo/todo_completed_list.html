@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div>
+        <h1>Completed tasks in "List {{ number }}"</h1>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Task</th>
+              <th scope="col">Created</th>
+              <th scope="col">Due on</th>
+              <th scope="col">Owner</th>
+              <th scope="col">Mark</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for d in data %}
+              <tr>
+                  <td>{{ d.name }}</td>
+                  <td>{{ d.created }}</td>
+                  <td>{{ d.due_on }}</td>
+                  <td>{{ d.owner }}</td>
+                  <td><a href="{% url 'change' d.id%}"><button type="button" class="btn btn-info">Not Done</button></a></td>
+              </tr>
+        {% endfor %}
+          </tbody>
+        </table>
+        <div>
+            <a href="{% url 'todos' number %}"><button type="button" class="btn btn-warning">View incomplete tasks</button></a>
+            <button type="button" class="btn btn-danger">Delete this list</button>
+        </div>
+    </div>
+{% endblock %}

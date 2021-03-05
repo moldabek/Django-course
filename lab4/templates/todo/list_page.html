@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container mt-5">
+        {% for datum in data %}
+            <hr>
+            <li><a href="{% url 'todos' datum.id %}">{{ datum.name }}</a></li>
+        {% endfor %}
+
+    </div>
+{% endblock content %}

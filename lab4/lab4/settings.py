@@ -32,7 +32,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Local Apps
-    'main'
+    'main',
+    
+    # Third-party Apps
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -45,7 +48,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'lab3.urls'
+ROOT_URLCONF = 'lab4.urls'
 
 TEMPLATES = [
     {
@@ -64,7 +67,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'lab3.wsgi.application'
+WSGI_APPLICATION = 'lab4.wsgi.application'
 
 
 # Database
